@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="/lumier/" />
+  <title>Place an Order — Lumier Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:       #B8963E;
+      --gold-light: #CDA84F;
+      --gold-muted: #D4C08A;
+      --gold-pale:  #F2EBD9;
+      --black:      #111111;
+      --gray:       #6B6560;
+      --rule:       rgba(184,150,62,0.22);
+      --bg:         #FFFFFF;
+      --off:        #FAFAF8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--black);
+      overflow-x: hidden;
+      font-weight: 300;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      height: 72px;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .logo-dot { color: var(--gold); }
+
+    nav { display: flex; align-items: center; gap: 40px; }
+
+    nav a {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+
+    nav a:hover { color: var(--black); }
+
+    .nav-back {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--gold); }
+
+    .nav-back-line {
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.2s;
+    }
+
+    .nav-back:hover .nav-back-line { width: 36px; }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      padding-top: 72px;
+      background: var(--off);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .page-hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 72px 10% 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .page-hero-left {}
+
+    .page-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .page-eyebrow-line { width: 32px; height: 1px; background: var(--gold); }
+
+    .page-eyebrow span {
+      font-size: 0.67rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .page-hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--black);
+    }
+
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+
+    .page-hero-right {
+      max-width: 380px;
+    }
+
+    .page-hero-right p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.85;
+    }
+
+
+    /* ─── MAIN LAYOUT ─── */
+    .order-page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 10% 120px;
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    /* ─── LEFT: INFO ─── */
+    .order-info { display: flex; flex-direction: column; gap: 48px; }
+
+    /* Style selector */
+    .info-block-label {
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .info-block-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .style-options { display: flex; flex-direction: column; gap: 2px; }
+
+    .style-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 22px;
+      background: var(--off);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+    }
+
+    .style-option:hover { border-color: var(--gold-muted); }
+
+    .style-option.selected {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+    }
+
+    .style-option input[type="radio"] { display: none; }
+
+    .style-option-left { display: flex; flex-direction: column; gap: 4px; }
+
+    .style-option-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .style-option-desc {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    .style-option-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--black);
+      white-space: nowrap;
+    }
+
+    .style-option-price span {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      color: var(--gray);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: block;
+      text-align: right;
+      margin-bottom: 2px;
+    }
+
+    /* How it works */
+    .process { display: flex; flex-direction: column; gap: 0; }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 0 16px;
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .process-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .process-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 300;
+      color: var(--gold-muted);
+      line-height: 1;
+    }
+
+    .process-text h4 {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .process-text p { font-size: 0.83rem; color: var(--gray); line-height: 1.7; }
+
+    /* ─── RIGHT: FORM ─── */
+    .order-form-card {
+      background: var(--off);
+      border: 1px solid var(--rule);
+      padding: 48px 44px;
+      position: sticky;
+      top: 96px;
+    }
+
+    .form-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .form-card-sub {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-bottom: 32px;
+      letter-spacing: 0.03em;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 7px;
+      font-weight: 400;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid #E0D9CC;
+      padding: 12px 15px;
+      font-size: 0.9rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: var(--black);
+      outline: none;
+      transition: border-color 0.2s;
+      border-radius: 0;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #C0B8AC; }
+
+    .form-group textarea { resize: vertical; min-height: 80px; }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8963E' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    .form-group select option { background: #fff; color: var(--black); }
+
+    /* Upload */
+    .upload-zone {
+      border: 1px dashed #C8BFA8;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: border-color 0.2s, background 0.2s;
+      background: var(--bg);
+    }
+
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+    }
+
+    .upload-zone input[type="file"] {
+      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+    }
+
+    .upload-icon-wrap {
+      width: 38px; height: 38px;
+      border: 1px solid var(--gold-muted);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px;
+    }
+
+    .upload-icon-wrap svg { color: var(--gold); }
+
+    .upload-zone p {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.6;
+      pointer-events: none;
+    }
+
+    .upload-zone strong { color: var(--black); font-weight: 500; }
+
+    .upload-preview { display: none; margin-top: 12px; gap: 8px; flex-wrap: wrap; justify-content: center; }
+    .upload-preview.show { display: flex; }
+    .preview-thumb { width: 60px; height: 60px; object-fit: cover; border: 1px solid var(--rule); }
+
+    /* Payment note inside form */
+    .form-payment-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: var(--gold-pale);
+      border: 1px solid rgba(184,150,62,0.3);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+    }
+
+    .form-payment-note svg { color: var(--gold); flex-shrink: 0; margin-top: 1px; }
+
+    .form-payment-note p {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    .form-payment-note strong { color: var(--black); font-weight: 500; }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--black);
+      color: #fff;
+      border: none;
+      padding: 17px;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: 'Jost', sans-serif;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .submit-btn:hover { background: var(--gold); }
+
+    .form-legal {
+      font-size: 0.7rem;
+      color: var(--gray);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.6;
+      opacity: 0.7;
+    }
+
+    /* ─── CONFIRMATION ─── */
+    .confirmation { display: none; text-align: center; padding: 20px 0; animation: fadeUp 0.5s ease; }
+    .confirmation.show { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .confirm-mark {
+      width: 60px; height: 60px;
+      border: 1px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .confirm-rule { width: 36px; height: 1px; background: var(--gold); margin: 0 auto 22px; }
+
+    .confirmation h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    .confirmation p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.8;
+      max-width: 320px;
+      margin: 0 auto 10px;
+    }
+
+    .confirm-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+      align-items: center;
+    }
+
+    .confirm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--rule);
+      padding: 10px 20px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      width: fit-content;
+    }
+
+    .confirm-badge svg { color: var(--gold); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black);
+      padding: 48px 10% 28px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .footer-logo-dot { color: var(--gold); }
+    .footer-tagline { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 5px; letter-spacing: 0.06em; }
+
+    .footer-note {
+      font-size: 0.73rem;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.7;
+      max-width: 260px;
+      text-align: right;
+    }
+
+    .footer-note strong { color: rgba(184,150,62,0.65); font-weight: 400; }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .order-page { grid-template-columns: 1fr; gap: 56px; }
+      .order-form-card { position: static; }
+      .page-hero-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 640px) {
+      nav a:not(.nav-back) { display: none; }
+      .order-page { padding: 56px 6% 80px; }
+      .order-form-card { padding: 28px 22px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-note { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ HEADER ═══════ -->
+  <header>
+    <a href="index.html" class="logo">Lumier<span class="logo-dot">.</span></a>
+    <nav>
+      <a href="index.html" class="nav-back">
+        <span class="nav-back-line"></span>
+        Back to Home
+      </a>
+    </nav>
+  </header>
+
+  <!-- ═══════ PAGE HERO ═══════ -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-left">
+        <div class="page-eyebrow">
+          <div class="page-eyebrow-line"></div>
+          <span>Lumier Studio</span>
+        </div>
+        <h1>Place Your<br /><em>Order</em></h1>
+      </div>
+      <div class="page-hero-right">
+        <p>
+          Tell us about your piece, upload your photograph, and choose your format.
+          Our team will be in touch within the hour. You will see your finished
+          painting before you pay a single dollar — a secure payment link is only
+          sent once you've seen it and love it.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ ORDER PAGE ═══════ -->
+  <div class="order-page">
+
+    <!-- LEFT: Style picker + how it works -->
+    <div class="order-info">
+
+      <div>
+        <div class="info-block-label">Choose Your Format</div>
+        <div class="style-options" id="style-options">
+
+          <label class="style-option selected" id="opt-digital">
+            <input type="radio" name="style" value="digital" checked />
+            <div class="style-option-left">
+              <div class="style-option-name">Digital</div>
+              <div class="style-option-desc">High-resolution file — print anywhere, any size</div>
+            </div>
+            <div class="style-option-price">
+              <span>From</span>
+              $199
+            </div>
+          </label>
+
+          <label class="style-option" id="opt-canvas">
+            <input type="radio" name="style" value="canvas" />
+            <div class="style-option-left">
+              <div class="style-option-name">Canvas</div>
+              <div class="style-option-desc">Gallery-grade canvas print, shipped to your door</div>
+            </div>
+            <div class="style-option-price">
+              <span>From</span>
+              $499
+            </div>
+          </label>
+
+          <label class="style-option" id="opt-framed">
+            <input type="radio" name="style" value="framed" />
+            <div class="style-option-left">
+              <div class="style-option-name">Framed Picture</div>
+              <div class="style-option-desc">Printed, framed, and ready to hang upon arrival</div>
+            </div>
+            <div class="style-option-price">
+              <span>From</span>
+              $899
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="info-block-label">How It Works</div>
+        <div class="process">
+          <div class="process-item">
+            <div class="process-num">01</div>
+            <div class="process-text">
+              <h4>Submit Your Photo</h4>
+              <p>Upload any clear, well-lit photograph. The higher the resolution, the more detail we can capture.</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <div class="process-num">02</div>
+            <div class="process-text">
+              <h4>We Reach Out Within the Hour</h4>
+              <p>Our team contacts you via message to confirm your order details, size preferences, and any special requests.</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <div class="process-num">03</div>
+            <div class="process-text">
+              <h4>We Create Your Painting</h4>
+              <p>Our studio gets to work. Most pieces are completed within 24–48 hours, depending on complexity.</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <div class="process-num">04</div>
+            <div class="process-text">
+              <h4>Approve & Pay Securely</h4>
+              <p>Once your painting is finished, we send you a preview. When you love it, a secure payment link is sent — no payment until you're satisfied.</p>
+            </div>
+          </div>
+          <div class="process-item">
+            <div class="process-num">05</div>
+            <div class="process-text">
+              <h4>Receive Your Piece</h4>
+              <p>Your finished painting is delivered — as a digital file, a rolled canvas, or a framed and ready-to-hang masterpiece.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="order-form-card" id="order-form-container">
+      <div class="form-card-title">Your Details</div>
+      <div class="form-card-sub">All fields marked are required to process your request.</div>
+
+      <form id="order-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Smith" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone / Message Number</label>
+          <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="jane@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="format">Painting Format</label>
+          <select id="format" required>
+            <option value="" disabled selected>Select a format…</option>
+            <option value="digital">Digital — From $199</option>
+            <option value="canvas">Canvas — From $499</option>
+            <option value="framed">Framed Picture — From $899</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Upload Your Photo</label>
+          <div class="upload-zone" id="upload-zone">
+            <input type="file" id="photo-upload" accept="image/*" multiple />
+            <div class="upload-icon-wrap">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </div>
+            <p><strong>Click to upload</strong> or drag &amp; drop<br />JPG · PNG · HEIC &nbsp;·&nbsp; Up to 20 MB</p>
+          </div>
+          <div class="upload-preview" id="upload-preview"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Notes (Optional)</label>
+          <textarea id="notes" placeholder="Describe the mood, colors, size, or any details you'd like us to emphasize…"></textarea>
+        </div>
+
+        <div class="form-payment-note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <p>
+            <strong>You see it before you pay.</strong> We will send you a preview of your
+            completed painting first. Only once you have seen it and are happy
+            will we send a <strong>secure payment link</strong> to complete your purchase.
+          </p>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Your Request</button>
+        <p class="form-legal">By submitting you agree to be contacted by our team via the details provided above.</p>
+
+      </form>
+
+      <!-- CONFIRMATION -->
+      <div class="confirmation" id="confirmation">
+        <div class="confirm-mark">✓</div>
+        <div class="confirm-rule"></div>
+        <h3>Request Received</h3>
+        <p>Thank you. Your photograph has been submitted and our team is already on it.</p>
+        <p>We will reach out via message within the next hour to confirm your order details.</p>
+        <div class="confirm-badges">
+          <div class="confirm-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+            </svg>
+            Expect a message within 1 hour
+          </div>
+          <div class="confirm-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            Secure payment link sent when complete
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Lumier<span class="footer-logo-dot">.</span></div>
+        <div class="footer-tagline">Custom Fine Art Paintings</div>
+      </div>
+      <div class="footer-note">
+        All artwork is delivered as a <strong>high-resolution digital file</strong>.<br />
+        No payment is taken until your painting is complete.
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Lumier Studio. All rights reserved.</span>
+      <span>Fine Art · Digital Delivery · Custom Paintings</span>
+    </div>
+  </footer>
+
+  <script>
+    // Style option highlight sync with radio
+    document.querySelectorAll('.style-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        document.querySelectorAll('.style-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        const val = opt.querySelector('input').value;
+        const select = document.getElementById('format');
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].value === val) { select.selectedIndex = i; break; }
+        }
+      });
+    });
+
+    // Also sync select → style options
+    document.getElementById('format').addEventListener('change', function() {
+      document.querySelectorAll('.style-option').forEach(o => o.classList.remove('selected'));
+      const match = document.querySelector(`.style-option input[value="${this.value}"]`);
+      if (match) match.closest('.style-option').classList.add('selected');
+    });
+
+    // Upload preview
+    const zone    = document.getElementById('upload-zone');
+    const input   = document.getElementById('photo-upload');
+    const preview = document.getElementById('upload-preview');
+
+    input.addEventListener('change', renderPreviews);
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      input.files = e.dataTransfer.files;
+      renderPreviews();
+    });
+
+    function renderPreviews() {
+      preview.innerHTML = '';
+      const files = Array.from(input.files);
+      if (!files.length) return;
+      preview.classList.add('show');
+      files.forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.className = 'preview-thumb';
+          preview.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Form submit — sends to Formspree, shows custom confirmation
+    document.getElementById('order-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const ok = ['fname', 'phone', 'email', 'format'].every(id => document.getElementById(id).value.trim());
+      if (!ok) { alert('Please complete all required fields.'); return; }
+
+      const form = e.target;
+      const btn = form.querySelector('.submit-btn');
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          document.getElementById('confirmation').classList.add('show');
+          document.getElementById('order-form-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          btn.textContent = 'Submit Your Request';
+          btn.disabled = false;
+          alert('Something went wrong. Please try again or contact us directly.');
+        }
+      } catch {
+        btn.textContent = 'Submit Your Request';
+        btn.disabled = false;
+        alert('Something went wrong. Please check your connection and try again.');
+      }
+    });
+
+    // Header shadow
+    window.addEventListener('scroll', () => {
+      document.querySelector('header').style.borderBottomColor =
+        window.scrollY > 10 ? 'rgba(184,150,62,0.22)' : 'rgba(184,150,62,0.12)';
+    });
+  </script>
+</body>
+</html>
