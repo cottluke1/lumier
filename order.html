@@ -652,7 +652,7 @@
             </div>
             <div class="style-option-price">
               <span>From</span>
-              $99
+              $199
             </div>
           </label>
 
@@ -664,7 +664,7 @@
             </div>
             <div class="style-option-price">
               <span>From</span>
-              $149
+              $499
             </div>
           </label>
 
@@ -676,7 +676,7 @@
             </div>
             <div class="style-option-price">
               <span>From</span>
-              $199
+              $899
             </div>
           </label>
 
@@ -758,9 +758,9 @@
           <label for="format">Painting Format</label>
           <select id="format" name="format" required>
             <option value="" disabled selected>Select a format…</option>
-            <option value="digital">Digital — From $99</option>
-            <option value="canvas">Canvas — From $149</option>
-            <option value="framed">Framed Picture — From $99</option>
+            <option value="digital">Digital — From $199</option>
+            <option value="canvas">Canvas — From $499</option>
+            <option value="framed">Framed Picture — From $899</option>
           </select>
         </div>
 
@@ -892,8 +892,8 @@
         <div class="footer-tagline">Custom Fine Art Paintings</div>
       </div>
       <div class="footer-note">
-        You don't pay until you see your painting
-and love every detail of it.
+        All artwork is delivered as a <strong>high-resolution digital file</strong>.<br />
+        No payment is taken until your painting is complete.
       </div>
     </div>
     <div class="footer-bottom">
@@ -972,7 +972,7 @@ and love every detail of it.
 
       const form = e.target;
       const btn = form.querySelector('.submit-btn');
-      btn.textContent = 'Please wait, this usually takes around 10 seconds…';
+      btn.textContent = 'Sending…';
       btn.disabled = true;
 
       // Build payload
@@ -1003,7 +1003,7 @@ and love every detail of it.
       }
 
       try {
-        await fetch('https://script.google.com/macros/s/AKfycbywc6u29Wft5MHcJ99jaNf6TXziuOtLiaq3Z4bZZVNcrqzZLizicsJGC3pD5-UBxjv/exec', {
+        await fetch('https://script.google.com/macros/s/AKfycbywc6u29Wft5MHcJ199jaNf6TXziuOtLiaq3Z4bZZVNcrqzZLizicsJGC3pD5-UBxjv/exec', {
           method: 'POST',
           body: JSON.stringify(payload),
           mode: 'no-cors'
