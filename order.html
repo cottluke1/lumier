@@ -997,11 +997,22 @@
         });
       }
 
-      // Submit all text fields to Formspree
+      // Submit all text fields to Formspree (no photo)
+      const fsData = new FormData();
+      fsData.append('first_name',  document.getElementById('fname').value.trim());
+      fsData.append('last_name',   document.getElementById('lname').value.trim());
+      fsData.append('email',       document.getElementById('email').value.trim());
+      fsData.append('phone',       document.getElementById('phone').value.trim());
+      fsData.append('format',      document.getElementById('format').value);
+      fsData.append('canvas_size', document.getElementById('canvas-size').value || '');
+      fsData.append('frame_size',  document.getElementById('frame-size').value  || '');
+      fsData.append('frame_color', (document.querySelector('input[name="frame_color"]:checked') || {}).value || '');
+      fsData.append('notes',       document.getElementById('notes').value.trim());
+
       try {
         const res = await fetch('https://formspree.io/f/xpqnzqkp', {
           method: 'POST',
-          body: new FormData(form),
+          body: fsData,
           headers: { 'Accept': 'application/json' }
         });
         if (res.ok) {
