@@ -424,7 +424,7 @@
       padding: 5px 12px;
     }
 
-    /* ─── STYLES / WHAT WE CAN DO ─── */
+    /* ─── STYLES ─── */
     #styles { background: var(--off); }
 
     .styles-intro {
@@ -516,237 +516,6 @@
       color: var(--black);
     }
 
-    /* ─── ORDER ─── */
-    #order { background: var(--bg); }
-
-    .order-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 100px;
-      align-items: start;
-    }
-
-    .order-left { display: flex; flex-direction: column; gap: 36px; }
-
-    .order-left > p {
-      font-size: 0.9rem;
-      color: var(--gray);
-      line-height: 1.85;
-    }
-
-    .process { display: flex; flex-direction: column; gap: 0; }
-
-    .process-item {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 0 16px;
-      padding-bottom: 28px;
-      margin-bottom: 28px;
-      border-bottom: 1px solid var(--rule);
-      align-items: start;
-    }
-
-    .process-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-    .process-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--gold-muted);
-      line-height: 1;
-      padding-top: 2px;
-    }
-
-    .process-text h4 {
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--black);
-      margin-bottom: 6px;
-      font-weight: 500;
-    }
-
-    .process-text p {
-      font-size: 0.85rem;
-      color: var(--gray);
-      line-height: 1.7;
-    }
-
-    /* FORM */
-    .order-form-wrap {
-      border: 1px solid var(--rule);
-      padding: 48px 44px;
-      background: var(--off);
-    }
-
-    .order-form-wrap h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.7rem;
-      font-weight: 400;
-      color: var(--black);
-      margin-bottom: 6px;
-    }
-
-    .form-subtitle {
-      font-size: 0.8rem;
-      color: var(--gray);
-      margin-bottom: 32px;
-      letter-spacing: 0.04em;
-    }
-
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-    .form-group { margin-bottom: 18px; }
-
-    .form-group label {
-      display: block;
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-bottom: 8px;
-      font-weight: 400;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid #E0D9CC;
-      padding: 13px 16px;
-      font-size: 0.9rem;
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      color: var(--black);
-      outline: none;
-      transition: border-color 0.2s;
-      border-radius: 0;
-      appearance: none;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: var(--gold);
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: #C0B8AC; }
-
-    .form-group textarea { resize: vertical; min-height: 88px; }
-
-    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23B8963E' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
-
-    .form-group select option { background: #fff; color: var(--black); }
-
-    /* Upload */
-    .upload-zone {
-      border: 1px dashed #C8BFA8;
-      padding: 32px 20px;
-      text-align: center;
-      cursor: pointer;
-      position: relative;
-      transition: border-color 0.2s, background 0.2s;
-      background: var(--bg);
-    }
-
-    .upload-zone:hover, .upload-zone.drag-over {
-      border-color: var(--gold);
-      background: var(--gold-pale);
-    }
-
-    .upload-zone input[type="file"] {
-      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
-    }
-
-    .upload-icon-wrap {
-      width: 40px; height: 40px;
-      border: 1px solid var(--gold-muted);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 12px;
-    }
-
-    .upload-icon-wrap svg { color: var(--gold); }
-
-    .upload-zone p {
-      font-size: 0.8rem;
-      color: var(--gray);
-      line-height: 1.6;
-      pointer-events: none;
-    }
-
-    .upload-zone strong { color: var(--black); font-weight: 500; }
-
-    .upload-preview { display: none; margin-top: 14px; gap: 8px; flex-wrap: wrap; justify-content: center; }
-    .upload-preview.show { display: flex; }
-    .preview-thumb { width: 64px; height: 64px; object-fit: cover; border: 1px solid var(--rule); }
-
-    .submit-btn {
-      width: 100%;
-      background: var(--black);
-      color: #fff;
-      border: none;
-      padding: 17px;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-family: 'Jost', sans-serif;
-      font-weight: 400;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 8px;
-    }
-
-    .submit-btn:hover { background: var(--gold); }
-
-    /* Confirmation */
-    .confirmation { display: none; text-align: center; padding: 32px 0; animation: fadeUp 0.5s ease; }
-    .confirmation.show { display: block; }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .confirm-rule { width: 40px; height: 1px; background: var(--gold); margin: 0 auto 24px; }
-
-    .confirm-mark {
-      width: 56px; height: 56px;
-      border: 1px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 1.3rem;
-      color: var(--gold);
-    }
-
-    .confirmation h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: var(--black);
-      margin-bottom: 14px;
-    }
-
-    .confirmation p {
-      font-size: 0.88rem;
-      color: var(--gray);
-      line-height: 1.75;
-      max-width: 320px;
-      margin: 0 auto 8px;
-    }
-
-    .confirm-time-badge {
-      display: inline-flex; align-items: center; gap: 10px;
-      border: 1px solid var(--rule);
-      padding: 10px 22px;
-      margin-top: 22px;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
     /* ─── FOOTER ─── */
     footer {
       background: var(--black);
@@ -809,7 +578,6 @@
       .hero-left { padding: 64px 8%; }
       #story { grid-template-columns: 1fr; gap: 52px; }
       .styles-intro { grid-template-columns: 1fr; }
-      .order-grid { grid-template-columns: 1fr; gap: 56px; }
       .gallery { grid-template-columns: 1fr 1fr; }
       .g1, .g2, .g3, .g4, .g5 { grid-column: auto; grid-row: auto; }
       .style-cards { grid-template-columns: 1fr; }
@@ -818,8 +586,6 @@
     @media (max-width: 640px) {
       nav a:not(.nav-cta) { display: none; }
       section { padding: 72px 6%; }
-      .form-row { grid-template-columns: 1fr; }
-      .order-form-wrap { padding: 28px 22px; }
       .gallery { grid-template-columns: 1fr; }
       .footer-note { text-align: left; }
     }
@@ -834,7 +600,7 @@
       <a href="#story">Our Story</a>
       <a href="#work">Gallery</a>
       <a href="#styles">Styles</a>
-      <a href="#order" class="nav-cta">Commission</a>
+      <a href="order.html" class="nav-cta">Order</a>
     </nav>
   </header>
 
@@ -843,7 +609,7 @@
     <div class="hero-left">
       <div class="hero-eyebrow">
         <div class="hero-eyebrow-line"></div>
-        <span>Fine Art · Custom Commissions</span>
+        <span>Fine Art · Custom Paintings</span>
       </div>
       <h1>Your Story,<br />Rendered in<br /><em>Timeless Art</em></h1>
       <p>
@@ -852,7 +618,7 @@
         digital file, ready to print at any scale.
       </p>
       <div class="hero-actions">
-        <a href="#order" class="btn-dark">Commission a Piece</a>
+        <a href="order.html" class="btn-dark">Order a Piece</a>
         <a href="#work" class="btn-ghost">
           <span class="btn-ghost-line"></span>
           View Gallery
@@ -905,7 +671,7 @@
       <div class="story-stats">
         <div class="stat">
           <div class="stat-num">500+</div>
-          <div class="stat-label">Commissions</div>
+          <div class="stat-label">Pieces Created</div>
         </div>
         <div class="stat">
           <div class="stat-num">3</div>
@@ -969,192 +735,66 @@
         <h2>Three Styles,<br />One <em>Standard</em></h2>
       </div>
       <p>
-        Each medium brings its own voice to your subject.
-        Our team will help you choose the style that best
-        suits your photograph and the feeling you want preserved.
+        Each format brings its own presence to your subject.
+        Our team will help you choose the option that best suits
+        your space, your vision, and the moment you want preserved.
       </p>
     </div>
     <div class="style-cards">
 
       <div class="style-card">
         <div class="style-card-img">
-          <img src="style-oil.jpg" alt="Oil painting" onerror="this.style.opacity=0" />
+          <img src="style-oil.jpg" alt="Digital painting" onerror="this.style.opacity=0" />
         </div>
         <div class="style-card-body">
           <div class="style-divider"></div>
-          <h3>Oil Painting</h3>
+          <h3>Digital</h3>
           <p>
-            Rich, luminous, and full of presence. Oil captures warm golden light,
-            dramatic depth, and the tactile beauty of a painted canvas.
-            The definitive choice for portraits, architecture, and landscapes.
+            Your painting delivered as a premium high-resolution digital file.
+            Print it anywhere, at any size, as many times as you like —
+            yours to keep and display forever.
           </p>
           <div class="style-price-row">
             <span class="style-from">From</span>
-            <span class="style-price">$49</span>
+            <span class="style-price">$199</span>
           </div>
         </div>
       </div>
 
       <div class="style-card">
         <div class="style-card-img">
-          <img src="style-watercolor.jpg" alt="Watercolor" onerror="this.style.opacity=0" />
+          <img src="style-watercolor.jpg" alt="Canvas print" onerror="this.style.opacity=0" />
         </div>
         <div class="style-card-body">
           <div class="style-divider"></div>
-          <h3>Watercolor</h3>
+          <h3>Canvas</h3>
           <p>
-            Soft, luminous, and ethereal. Watercolor lets pigment bloom and breathe,
-            producing a delicate, light-filled beauty. Perfect for florals,
-            travel scenes, weddings, and botanical subjects.
+            Your painting professionally printed on gallery-grade canvas and
+            shipped straight to your door. Ready to hang, built to last,
+            and stunning at any scale.
           </p>
           <div class="style-price-row">
             <span class="style-from">From</span>
-            <span class="style-price">$39</span>
+            <span class="style-price">$499</span>
           </div>
         </div>
       </div>
 
       <div class="style-card">
         <div class="style-card-img">
-          <img src="style-pencil.jpg" alt="Colored pencil" onerror="this.style.opacity=0" />
+          <img src="style-pencil.jpg" alt="Framed picture" onerror="this.style.opacity=0" />
         </div>
         <div class="style-card-body">
           <div class="style-divider"></div>
-          <h3>Colored Pencil</h3>
+          <h3>Framed Picture</h3>
           <p>
-            Intimate, layered, and full of character. The fine strokes of colored
-            pencil give your piece an irreplaceable handmade warmth — personal,
-            detailed, and timeless.
+            The complete luxury experience. Your painting printed, mounted,
+            and set in a handsome frame — delivered ready to hang on your
+            wall the moment it arrives.
           </p>
           <div class="style-price-row">
             <span class="style-from">From</span>
-            <span class="style-price">$35</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════ ORDER ═══════ -->
-  <section id="order">
-    <div class="order-grid">
-
-      <div class="order-left">
-        <div>
-          <div class="section-eyebrow">
-            <div class="section-eyebrow-line"></div>
-            <span>Commission a Piece</span>
-          </div>
-          <h2>Begin Your<br /><em>Commission</em></h2>
-        </div>
-        <p>
-          Submit your photograph and tell us what you envision.
-          Our team will reach out within the hour to discuss your piece,
-          confirm details, and guide you through the process.
-        </p>
-        <div class="process">
-          <div class="process-item">
-            <div class="process-num">01</div>
-            <div class="process-text">
-              <h4>Upload Your Photo</h4>
-              <p>Any clear, well-lit photograph works beautifully. The higher the resolution, the finer the detail we can achieve.</p>
-            </div>
-          </div>
-          <div class="process-item">
-            <div class="process-num">02</div>
-            <div class="process-text">
-              <h4>Choose Your Style</h4>
-              <p>Select oil, watercolor, or colored pencil — or let us recommend the best match for your subject.</p>
-            </div>
-          </div>
-          <div class="process-item">
-            <div class="process-num">03</div>
-            <div class="process-text">
-              <h4>We Contact You Within the Hour</h4>
-              <p>Our team will reach out via message to confirm your commission, discuss any details, and finalize pricing.</p>
-            </div>
-          </div>
-          <div class="process-item">
-            <div class="process-num">04</div>
-            <div class="process-text">
-              <h4>Receive Your Painting</h4>
-              <p>Your finished piece arrives as a print-ready digital file — yours to print anywhere, at any size, forever.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="order-form-wrap" id="order-form-container">
-        <h3>Start Your Order</h3>
-        <p class="form-subtitle">Complete the form below and we'll be in touch shortly.</p>
-
-        <form id="order-form" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" placeholder="Jane" required />
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" placeholder="Smith" required />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone / Message Number</label>
-            <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required />
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="jane@example.com" required />
-          </div>
-
-          <div class="form-group">
-            <label for="style">Painting Style</label>
-            <select id="style" required>
-              <option value="" disabled selected>Select a style…</option>
-              <option value="oil">Oil Painting</option>
-              <option value="watercolor">Watercolor</option>
-              <option value="pencil">Colored Pencil</option>
-              <option value="unsure">Help Me Choose</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Upload Your Photo</label>
-            <div class="upload-zone" id="upload-zone">
-              <input type="file" id="photo-upload" accept="image/*" multiple />
-              <div class="upload-icon-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
-                </svg>
-              </div>
-              <p><strong>Click to upload</strong> or drag &amp; drop<br />JPG · PNG · HEIC &nbsp;·&nbsp; Up to 20 MB</p>
-            </div>
-            <div class="upload-preview" id="upload-preview"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="notes">Notes (Optional)</label>
-            <textarea id="notes" placeholder="Describe the mood, colors, or details you'd like us to emphasize…"></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">Submit Commission</button>
-        </form>
-
-        <div class="confirmation" id="confirmation">
-          <div class="confirm-mark">✓</div>
-          <div class="confirm-rule"></div>
-          <h3>Commission Received</h3>
-          <p>Thank you. Your photograph has been submitted and your commission is in our queue.</p>
-          <p>Our team will contact you via message within the next hour to confirm your order and discuss the details.</p>
-          <div class="confirm-time-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-            </svg>
-            Expect a message within 1 hour
+            <span class="style-price">$899</span>
           </div>
         </div>
       </div>
@@ -1167,7 +807,7 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo">Lumier<span class="footer-logo-dot">.</span></div>
-        <div class="footer-tagline">Custom Fine Art Commissions</div>
+        <div class="footer-tagline">Custom Fine Art Paintings</div>
       </div>
       <div class="footer-note">
         All artwork is delivered as a <strong>high-resolution digital file</strong>.<br />
@@ -1176,56 +816,11 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 Lumier Studio. All rights reserved.</span>
-      <span>Fine Art · Digital Delivery · Custom Commissions</span>
+      <span>Fine Art · Digital Delivery · Custom Paintings</span>
     </div>
   </footer>
 
   <script>
-    // Upload preview
-    const zone    = document.getElementById('upload-zone');
-    const input   = document.getElementById('photo-upload');
-    const preview = document.getElementById('upload-preview');
-
-    input.addEventListener('change', renderPreviews);
-    zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
-    zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
-    zone.addEventListener('drop', e => {
-      e.preventDefault();
-      zone.classList.remove('drag-over');
-      input.files = e.dataTransfer.files;
-      renderPreviews();
-    });
-
-    function renderPreviews() {
-      preview.innerHTML = '';
-      const files = Array.from(input.files);
-      if (!files.length) return;
-      preview.classList.add('show');
-      files.forEach(file => {
-        if (!file.type.startsWith('image/')) return;
-        const reader = new FileReader();
-        reader.onload = e => {
-          const img = document.createElement('img');
-          img.src = e.target.result;
-          img.className = 'preview-thumb';
-          preview.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-
-    // Form submit
-    document.getElementById('order-form').addEventListener('submit', e => {
-      e.preventDefault();
-      const ok = ['fname','phone','email','style'].every(id => document.getElementById(id).value.trim());
-      if (!ok) { alert('Please complete all required fields.'); return; }
-      document.getElementById('order-form').style.display = 'none';
-      const conf = document.getElementById('confirmation');
-      conf.classList.add('show');
-      document.getElementById('order-form-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-
-    // Header border on scroll
     window.addEventListener('scroll', () => {
       document.querySelector('header').style.borderBottomColor =
         window.scrollY > 10 ? 'rgba(184,150,62,0.22)' : 'rgba(184,150,62,0.12)';
